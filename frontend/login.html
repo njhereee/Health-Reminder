@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>Login - HealthReminder</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/login.css">
+</head>
+<body>
+  <div class="login-container">
+    <div class="lang-switcher">
+      <select id="lang-select">
+        <option value="id">🇮🇩 Bahasa</option>
+        <option value="en">🇬🇧 English</option>
+      </select>
+    </div>
+
+    <h2 id="form-title">Masuk Akun</h2>
+    <!-- force POST and no default action -->
+    <form id="login-form" method="POST">
+      <!-- identifier instead of email -->
+      <div class="form-group">
+        <input
+          type="text"
+          name="identifier"
+          id="identifier"
+          placeholder=" "
+          required
+        >
+        <label for="identifier">Email / Username / No. Telepon</label>
+      </div>
+
+      <div class="form-group" style="position: relative;">
+        <input type="password" name="password" id="pass" placeholder=" " required>
+        <label for="pass">Password</label>
+        <span id="togglePass" style="position: absolute; top: 12px; right: 12px; cursor: pointer; font-size: 14px;">👁️</span>
+      </div>
+
+      <button type="submit" id="submit-btn">Login</button>
+      <div id="error-msg"></div>
+    </form>
+
+    <div class="link" id="link-signup">
+      Belum punya akun? <a href="signup.html">Daftar di sini</a>
+    </div>
+  </div>
+
+  <script>
+    const langText = {
+      id: {
+        title:      "Masuk Akun",
+        identifier: "Email / Username / No. Telepon",
+        pass:       "Password",
+        submit:     "Login",
+        link:       'Belum punya akun? <a href="signup.html">Daftar di sini</a>',
+        not_found:  "Akun tidak ditemukan!",
+        wrong_password: "Password salah!",
+        error:      "Terjadi kesalahan!"
+      },
+      en: {
+        title:      "Sign In",
+        identifier: "Email / Username / Phone Number",
+        pass:       "Password",
+        submit:     "Login",
+        link:       'Don’t have an account? <a href="signup.html">Sign up here</a>',
+        not_found:  "Account not found!",
+        wrong_password: "Incorrect password!",
+        error:      "An error occurred!"
+      }
+    };
+
+    const langSelect = document.getElementById("lang-select");
+    const errorMsg  = document.getElementById("error-msg");
+    let currentLang = "id";
+
+    // Language switcher
+    langSelect.addEventListener("change", () => {
+      currentLang = langSelect.value;
+      const txt = langText[currentLang];
+      document.getElementById("form-title").innerText               = txt.title;
+      document.querySelector("label[for='identifier']").innerText   = txt.identifier;
+      document.querySelector("label[for='pass']").innerText         = txt.pass;
+      document.getElementById("submit-btn").innerText               = txt.submit;
+      document.getElementById("link-signup").innerHTML              = txt.link;
+    });
+
+    // Prefill identifier from localStorage
+    const savedId = localStorage.getItem("savedIdentifier");
+    if (savedId) {
+      document.getElementById("identifier").value = savedId;
+    }
+
+    // Handle login via AJAX POST
+    document.getElementById("login-form").addEventListener("submit", async e => {
+      e.preventDefault();
+      errorMsg.innerText = "";
+
+      const identifier = document.getElementById("identifier").value;
+      const password   = document.getElementById("pass").value;
+
+      try {
+        const res = await fetch("../backend/login.php", {
+          method:  "POST",
+          headers: { "Content-Type": "application/x-www-form-urlencoded" },
+          body:    `identifier=${encodeURIComponent(identifier)}&password=${encodeURIComponent(password)}`
+        });
+        const text = await res.text();
+
+        if (text === "success") {
+          localStorage.setItem("savedIdentifier", identifier);
+          // relative to this file, dashboard.php lives next to login.html
+          window.location.href = "dashboard.php";
+        }
+        else if (text === "not_found") {
+          errorMsg.innerText = langText[currentLang].not_found;
+        }
+        else if (text === "wrong_password") {
+          errorMsg.innerText = langText[currentLang].wrong_password;
+        }
+        else {
+          errorMsg.innerText = langText[currentLang].error;
+        }
+      } catch (err) {
+        console.error(err);
+        errorMsg.innerText = langText[currentLang].error;
+      }
+    });
+
+    // Toggle password visibility
+    document.getElementById("togglePass").addEventListener("click", () => {
+      const passField = document.getElementById("pass");
+      if (passField.type === "password") {
+        passField.type      = "text";
+        event.target.innerText = "🙈";
+      } else {
+        passField.type      = "password";
+        event.target.innerText = "👁️";
+      }
+    });
+  </script>
+</body>
+</html>

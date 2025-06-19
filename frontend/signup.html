@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>Sign Up - HealthReminder</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Inter', sans-serif;
+      background: linear-gradient(to right, #f0f4f8, #e3e9f1);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .signup-container {
+      background: rgba(255, 255, 255, 0.75);
+      backdrop-filter: blur(10px);
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.1);
+      border-radius: 16px;
+      padding: 40px 32px;
+      width: 100%;
+      max-width: 420px;
+      position: relative;
+      transition: all 0.3s ease;
+    }
+
+    .signup-container h2 {
+      text-align: center;
+      margin-bottom: 30px;
+      font-size: 24px;
+      font-weight: 600;
+      color: #1f2937;
+    }
+
+    .form-group {
+      position: relative;
+      margin-bottom: 24px;
+    }
+
+    .form-group input {
+      width: 100%;
+      padding: 14px 12px 14px 12px;
+      border: 1px solid #d1d5db;
+      border-radius: 8px;
+      background: white;
+      font-size: 14px;
+      outline: none;
+      transition: all 0.2s ease;
+    }
+
+    .form-group label {
+      position: absolute;
+      left: 12px;
+      top: 14px;
+      color: #9ca3af;
+      font-size: 13px;
+      background: white;
+      padding: 0 4px;
+      pointer-events: none;
+      transition: 0.2s ease all;
+    }
+
+    .form-group input:focus + label,
+    .form-group input:not(:placeholder-shown) + label {
+      top: -8px;
+      left: 8px;
+      font-size: 11px;
+      color: #2563eb;
+    }
+
+    button {
+      width: 100%;
+      background-color: #10b981;
+      color: white;
+      font-weight: 600;
+      border: none;
+      padding: 12px;
+      border-radius: 8px;
+      font-size: 15px;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+
+    button:hover {
+      background-color: #059669;
+    }
+
+    .link {
+      text-align: center;
+      font-size: 13px;
+      margin-top: 16px;
+    }
+
+    .link a {
+      color: #2563eb;
+      text-decoration: none;
+    }
+
+    .lang-switcher {
+      position: absolute;
+      top: 16px;
+      right: 16px;
+    }
+
+    .lang-switcher select {
+      padding: 6px 10px;
+      border-radius: 6px;
+      border: 1px solid #d1d5db;
+      font-size: 13px;
+      background: white;
+    }
+  </style>
+</head>
+<body>
+  <div class="signup-container">
+    <div class="lang-switcher">
+      <select id="lang-select">
+        <option value="id">🇮🇩 Bahasa</option>
+        <option value="en">🇬🇧 English</option>
+      </select>
+    </div>
+
+    <h2 id="form-title">Buat Akun</h2>
+    <form action="../backend/signup.php" method="POST">
+      <div class="form-group">
+        <input type="text" name="username" id="name" placeholder=" " required>
+        <label for="name">Nama Lengkap</label>
+      </div>
+      <div class="form-group">
+        <input type="email" name="email" id="email" placeholder=" " required>
+        <label for="email">Email</label>
+      </div>
+      <div class="form-group">
+        <input type="tel" name="phone_number" id="phone" placeholder=" " required>
+        <label for="phone">No. Telepon</label>
+      </div>
+      <div class="form-group" style="position: relative;">
+        <input type="password" name="password" id="pass" placeholder=" " required>
+        <label for="pass">Password</label>
+        <span id="togglePass" style="position: absolute; top: 12px; right: 12px; cursor: pointer;">👁️</span>
+      </div>
+      
+      <div class="form-group" style="position: relative;">
+        <input type="password" name="confirm_password" id="confirm" placeholder=" " required>
+        <label for="confirm">Ulangi Password</label>
+        <span id="toggleConfirm" style="position: absolute; top: 12px; right: 12px; cursor: pointer;">👁️</span>
+      </div>
+      
+      <button type="submit" id="submit-btn">Daftar</button>
+    </form>
+    <div class="link" id="link-login">
+      Sudah punya akun? <a href="login.html">Login di sini</a>
+    </div>
+  </div>
+
+  <script>
+    const langText = {
+      id: {
+        title: "Buat Akun",
+        name: "Nama Lengkap",
+        email: "Email",
+        phone: "No. Telepon",
+        pass: "Password",
+        confirm: "Ulangi Password",
+        submit: "Daftar",
+        link: 'Sudah punya akun? <a href="login.html">Login di sini</a>'
+      },
+      en: {
+        title: "Create Account",
+        name: "Full Name",
+        email: "Email",
+        phone: "Phone Number",
+        pass: "Password",
+        confirm: "Confirm Password",
+        submit: "Sign Up",
+        link: 'Already have an account? <a href="login.html">Log in here</a>'
+      }
+    };
+
+    const langSelect = document.getElementById("lang-select");
+    document.getElementById("lang-select").addEventListener("change", function() {
+      const lang = this.value;
+      document.getElementById("form-title").innerText = langText[lang].title;
+      document.querySelector("label[for='name']").innerText    = langText[lang].name;
+      document.querySelector("label[for='email']").innerText   = langText[lang].email;
+      document.querySelector("label[for='phone']").innerText   = langText[lang].phone;
+      document.querySelector("label[for='pass']").innerText    = langText[lang].pass;
+      document.querySelector("label[for='confirm']").innerText = langText[lang].confirm;
+      document.getElementById("submit-btn").innerText          = langText[lang].submit;
+      document.getElementById("link-login").innerHTML          = langText[lang].link;
+    });
+    // Toggle untuk password
+    const togglePass = document.getElementById("togglePass");
+    const passField = document.getElementById("pass");
+  
+    togglePass.addEventListener("click", () => {
+      if (passField.type === "password") {
+        passField.type = "text";
+        togglePass.innerText = "🙈";
+      } else {
+        passField.type = "password";
+        togglePass.innerText = "👁️";
+      }
+    });
+  
+    // Toggle untuk konfirmasi password
+    const toggleConfirm = document.getElementById("toggleConfirm");
+    const confirmField = document.getElementById("confirm");
+  
+    toggleConfirm.addEventListener("click", () => {
+      if (confirmField.type === "password") {
+        confirmField.type = "text";
+        toggleConfirm.innerText = "🙈";
+      } else {
+        confirmField.type = "password";
+        toggleConfirm.innerText = "👁️";
+      }
+    });
+  </script>
+  
+</body>
+</html>

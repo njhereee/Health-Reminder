@@ -1,0 +1,240 @@
+<!DOCTYPE html> 
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>HealthReminder - Overview</title>
+  <style>
+    /* Reset dasar dan font */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    body {
+      background-color: #f9fafb;
+      color: #333;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: 40px 20px;
+    }
+
+    /* Header */
+    header {
+      text-align: center;
+      margin-bottom: 60px;
+      position: relative;
+    }
+
+    header h1 {
+      font-size: 3rem;
+      font-weight: 800;
+      color: #2c3e50;
+      letter-spacing: 1.5px;
+      position: relative;
+      display: inline-block;
+      padding-bottom: 8px;
+    }
+
+    header h1::after {
+      content: '';
+      display: block;
+      width: 80px;
+      height: 4px;
+      background: #27ae60;
+      margin: 10px auto 0 auto;
+      border-radius: 2px;
+    }
+
+    /* Language Switcher (di pojok kanan atas header) */
+    .lang-switcher {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+    }
+    .lang-switcher select {
+      padding: 6px 10px;
+      border-radius: 6px;
+      border: 1px solid #d1d5db;
+      font-size: 13px;
+      background: white;
+    }
+
+    /* Main content styling */
+    main {
+      flex-grow: 1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 0 15px;
+    }
+
+    .intro {
+      background: #ffffff;
+      width: 100%;
+      max-width: 480px;
+      border-radius: 16px;
+      padding: 40px 35px;
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+      text-align: center;
+      transition: box-shadow 0.3s ease;
+    }
+
+    .intro:hover,
+    .intro:focus-within {
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12);
+    }
+
+    .intro p {
+      font-size: 1.15rem;
+      line-height: 1.65;
+      color: #555f6e;
+      margin-bottom: 45px;
+      font-weight: 500;
+    }
+
+    /* Button container */
+    .cta {
+      display: flex;
+      gap: 24px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    /* Button style */
+    .btn {
+      background-color: #27ae60;
+      color: white;
+      font-weight: 700;
+      text-decoration: none;
+      padding: 14px 36px;
+      border-radius: 50px;
+      box-shadow: 0 6px 15px rgba(39, 174, 96, 0.5);
+      transition: background-color 0.25s ease, box-shadow 0.25s ease, transform 0.15s ease;
+      font-size: 1.15rem;
+      user-select: none;
+      min-width: 130px;
+      display: inline-block;
+    }
+
+    .btn:hover,
+    .btn:focus {
+      background-color: #219150;
+      box-shadow: 0 9px 22px rgba(33, 145, 80, 0.7);
+      transform: translateY(-3px);
+      outline: none;
+    }
+
+    /* Footer */
+    footer {
+      text-align: center;
+      color: #95a5a6;
+      font-size: 0.9rem;
+      padding-top: 30px;
+      user-select: none;
+    }
+
+    /* Responsive */
+
+    /* Tablet */
+    @media (max-width: 768px) {
+      header h1 {
+        font-size: 2.4rem;
+      }
+      
+      .intro {
+        padding: 35px 25px;
+        max-width: 400px;
+      }
+
+      .btn {
+        min-width: 110px;
+        font-size: 1rem;
+        padding: 12px 28px;
+      }
+    }
+
+    /* Mobile */
+    @media (max-width: 480px) {
+      body {
+        padding: 30px 15px;
+      }
+
+      header h1 {
+        font-size: 2rem;
+      }
+
+      .intro p {
+        font-size: 1rem;
+        margin-bottom: 35px;
+      }
+
+      .cta {
+        flex-direction: column;
+        gap: 18px;
+      }
+
+      .btn {
+        min-width: 100%;
+        padding: 14px 0;
+        font-size: 1.1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1 id="header-title">HealthReminder</h1>
+    <div class="lang-switcher">
+      <select id="lang-select">
+        <option value="id">🇮🇩 Bahasa</option>
+        <option value="en">🇬🇧 English</option>
+      </select>
+    </div>
+  </header>
+
+  <main>
+    <section class="intro">
+      <p id="intro-text">Aplikasi pengingat kesehatan yang sederhana dan mudah digunakan, khususnya untuk pengguna senior.</p>
+      <div class="cta">
+        <a href="login.html" class="btn" id="btn-login">Login</a>
+        <a href="signup.html" class="btn" id="btn-signup">Sign Up</a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 HealthReminder</p>
+  </footer>
+
+  <script>
+    const langText = {
+      id: {
+        header: "HealthReminder",
+        intro: "Aplikasi pengingat kesehatan yang sederhana dan mudah digunakan, khususnya untuk pengguna senior.",
+        login: "Login",
+        signup: "Daftar"
+      },
+      en: {
+        header: "HealthReminder",
+        intro: "A simple and easy-to-use health reminder app, especially for senior users.",
+        login: "Login",
+        signup: "Sign Up"
+      }
+    };
+
+    const langSelect = document.getElementById("lang-select");
+    langSelect.addEventListener("change", function () {
+      const selectedLang = this.value;
+      document.getElementById("header-title").innerText = langText[selectedLang].header;
+      document.getElementById("intro-text").innerText = langText[selectedLang].intro;
+      document.getElementById("btn-login").innerText = langText[selectedLang].login;
+      document.getElementById("btn-signup").innerText = langText[selectedLang].signup;
+    });
+  </script>
+</body>
+</html>

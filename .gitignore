@@ -1,0 +1,19 @@
+# Compiled output or temporary files
+/node_modules/      # If you use NPM/Node.js in frontend/backend
+/vendor/            # If you use Composer for PHP dependencies
+*.log
+.env                # Environment variables, especially for database credentials
+
+# Database specific
+*.sql               # If this is a dump, keep healthreminder.sql if it's schema only
+!healthreminder.sql # UNCOMMENT THIS LINE IF healthreminder.sql IS YOUR DATABASE SCHEMA YOU WANT TO INCLUDE
+
+# IDE specific files
+.vscode/            # VS Code settings
+.idea/              # IntelliJ/PHPStorm settings
+*.sublime-project
+*.sublime-workspace
+
+# OS generated files
+.DS_Store
+Thumbs.db
