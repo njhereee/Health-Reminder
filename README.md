@@ -1,8 +1,8 @@
-# 💖 My Little Health Reminder\! 🌿✨
+# 💖 My Little Health Buddy\! 🌿✨
 
-Hello, health champions\! ✨ Ever wished you had a tiny, adorable friend whispering gentle reminders to help you stay healthy? Welcome to **My Little Health Reminder\!**, a charming web application designed to be your personal assistant for a healthier, happier life\! 🏡💖
+Hello, health champions\! ✨ Ever wished you had a tiny, adorable friend whispering gentle reminders to help you stay healthy? Welcome to **My Little Health Buddy\!**, a charming web application designed to be your personal assistant for a healthier, happier life\! 🏡💖
 
-This app is your cozy corner for managing everything from daily reminders to doctor's appointments, all wrapped up in a user-friendly package. We're currently **95% complete** on this journey to make wellness fun and easy\! 🚀
+This app is your cozy corner for managing everything from daily reminders to doctor's appointments, all wrapped up in a user-friendly package. We're currently **100% complete** on this journey to make wellness fun and easy\! 🚀
 
 -----
 
@@ -109,28 +109,37 @@ This project is licensed under the **MIT License**.
 
 ### 📸 Moments with My Health Buddy (Screenshots)
 
-Here are some sweet glimpses of our application in action:
+Here are some sweet glimpses of our application in action: 🏡💖
 
-*Your friendly entry point to the Health Buddy app. 🔑*
+![Login Page](screenshot/login.png)
+*Your warm welcome to the Health Buddy app, ready to begin your wellness journey. 🔑*
 
-*Where new health champions begin their journey\! ✍️*
+![Sign Up Page](screenshot/signup.png)
+*Where new health champions create their personal health profile! ✍️*
 
-*Your daily health command center, with key insights. 🏠*
+![Dashboard Overview](screenshot/dashboard.png)
+*Your daily health command center, offering quick insights and an overview of your well-being. 🏠✨*
 
-*Another delightful view of your personalized health dashboard. 🏡✨*
+![Dashboard (Alternate View)](screenshot/dashboard2.png)
+*Another delightful perspective of your personalized health dashboard, showing more details. 📊*
 
-*Setting up gentle nudges for your health tasks. ⏰*
+![Reminder Management](screenshot/reminder.png)
+*Setting up gentle nudges for your health tasks—never miss a beat! ⏰🔔*
 
-*Keeping track of all your important medical visits. 🗓️*
+![Appointments Calendar](screenshot/appointments.png)
+*Keeping track of all your important medical visits and schedules. 🗓️🩺*
 
-*Your personal checklist for a healthy day. ✅*
+![To-Do List](screenshot/todo_list.png)
+*Your personal checklist for staying on top of daily health activities. ✅🏃‍♀️*
 
-*Generating insightful summaries of your health journey. 📊*
+![Reports Section](screenshot/reports.png)
+*Generating insightful summaries and progress reports of your health journey. 📈📄*
 
-*Discovering wisdom and tips for a healthier lifestyle. 📚*
+![Health Blog](screenshot/health_blog.png)
+*Discovering wisdom and tips for a healthier lifestyle through engaging articles. 🧠💡*
 
-*Your personal space to manage settings and preferences. 👤*
+![User Profile](screenshot/profile.png)
+*Your personal space to manage settings, preferences, and personal details. 👤⚙️*
 
-*Embrace the calm with our cozy dark theme\! 🌙*
-
------
+![Dark Theme Activated](screenshot/switch_theme.png)
+*Embrace the calm with our cozy dark theme—perfect for winding down! 🌙✨*
